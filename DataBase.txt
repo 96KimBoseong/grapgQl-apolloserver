@@ -1,0 +1,29 @@
+아폴로서버! 
+삽입삭제 수정
+노드몬 설치
+npm init -y로 패키지제이슨만듬
+npm i 로 패키지락제이슨 만듬
+패키지 스크립트에서 start : nodemon index.js 설정
+npm i -g nodemon
+nodemon index.js 터미널에 치면 결과? 나옴
+$ npm i convert-csv-to-json - 변환기
+npm i graphql apollo-sever 아폴로서버 그래프큐엘 같이설치
+노드몬 설치 그래프큐엘 설치 아폴로서버 설치 하고 데이터베이스 csv파일을 js에 import 시켜주고 index.js를
+노드몬으로 실행하면 서버가 아폴로서버가 구동되서 링크줌
+아폴로 서버에 들어가서 왼쪽 카테고리에 필요한 필드를 체크하고 ExampleQuery누르면 오른쪽 response에 json파일 형식으로 나타남
+
+
+
+type Query 
+teams 라는 쿼리는 team 이라는 데이터베이스를 가진다
+type team 에서 타입설정해야댐 
+int 정수형 
+String 문자형 
+실수형 ,불린형 각각 설정해줘야함
+
+const resolvers 는 서버에 데이터베이스를 넘겨준다
+
+데이터 구축시 gql 안에 쿼리 부터 등록 콤마 찍어도되고 안찍어도됨
+쿼리에 등록후 타입 등록 
+리졸브변수 Query안에 등록 해야됨 
+
