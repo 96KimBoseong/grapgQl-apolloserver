@@ -8,6 +8,24 @@ const typeDefs = gql`
     equipments: [Equipment]
     supplies: [Supply]
   }
+  type Mutation {
+    insertEquipment(
+      id:String,
+      used_by:String,
+      count: Int,
+      new_or_used:String,
+    ):Equipment
+
+    deleteEquipment(id:String):Equipment
+
+    editEquipment(
+      id:String,
+      used_by:String,
+      count:Int,
+      new_or_used:String
+    ):Equipment
+    
+  }
   type Supply {
     id: String
     team: Int
@@ -28,8 +46,38 @@ const typeDefs = gql`
     count: Int
     new_or_used: String
   }
+  
 `;
 const resolvers = {
+  Mutation:{
+    insertEquipment:(parent,args,context,info)=>{
+      database.equipments.push(args)
+      return args
+    },
+    deleteEquipment:(parent,args,context,info)=>{
+      const deleted = database.equipments
+      .filter((equipment)=>{
+        return equipment.id === args.id
+      })[0]
+      //deleted 안에 내가 삭제하고 싶은 아이디를 넣음 
+      database.equipments = database.equipments
+      .filter((equipment)=>{
+        return equipment.id == args.id
+      })
+      return deleted
+    },
+    editEquipment:(parent,args,context,info)=>{
+      return database.equipments
+      .filter((equipment)=>{
+        return equipment.id === args.id
+      }).map((equipment)=>{
+        Object.assign(equipment,args)
+        return equipment
+      })[0]
+    }
+  }
+  ,
+
   Query: {
     teams: () => database.teams
     .map((team)=>{
