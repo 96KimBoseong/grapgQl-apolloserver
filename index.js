@@ -62,7 +62,7 @@ const resolvers = {
       //deleted 안에 내가 삭제하고 싶은 아이디를 넣음 
       database.equipments = database.equipments
       .filter((equipment)=>{
-        return equipment.id == args.id
+        return equipment.id !== args.id
       })
       return deleted
     },
